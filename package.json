@@ -1,5 +1,5 @@
 {
-  "name": "drop-down-menu",
+  "name": "weather-app",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -11,15 +11,15 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/j1ngye/drop-down-menu.git"
+    "url": "git+https://github.com/j1ngye/weather-app.git"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/j1ngye/drop-down-menu/issues"
+    "url": "https://github.com/j1ngye/weather-app/issues"
   },
-  "homepage": "https://github.com/j1ngye/drop-down-menu#readme",
+  "homepage": "https://github.com/j1ngye/weather-app#readme",
   "devDependencies": {
     "css-loader": "^7.1.2",
     "gh-pages": "^6.3.0",
