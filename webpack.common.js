@@ -12,7 +12,7 @@ module.exports = {
     filename: "main.js",
     path: path.resolve(__dirname, "dist"),
     clean: true,
-    // publicPath: "/drop-down-menu/",
+    publicPath: "/weather-app/",
   },
   module: {
     rules: [
@@ -22,7 +22,7 @@ module.exports = {
         use: "html-loader",
       },
       {
-        test: /\.(png|jpg|jpeg|gif|svg)$/i,
+        test: /\.(png|jpg|jpeg|gif|svg|avif)$/i,
         type: "asset/resource",
       },
     ],

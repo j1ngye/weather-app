@@ -1,0 +1,119 @@
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+#container,
+.basic-info,
+.details-info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#container {
+  position: relative;
+  background-color: #154d71;
+  justify-content: space-around;
+  padding: 20px;
+  width: 100vw;
+  height: 100vh;
+}
+
+form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+  position: absolute;
+  top: 20px;
+  left: 20px;
+}
+
+input {
+  padding: 5px;
+  outline: none;
+  border: none;
+  min-width: 200px;
+}
+
+.basic-info {
+  background-color: #000000ac;
+  justify-content: center;
+  padding: 10px;
+  gap: 5px;
+}
+
+.details-info {
+  align-items: flex-start;
+  background-color: #000000ac;
+  width: 400px;
+  padding: 8px;
+  gap: 5px;
+  border-radius: 5px;
+}
+
+.forecast-info {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.day-info {
+  display: flex;
+}
+
+.day-info .icon {
+  flex-grow: 1;
+  text-align: center;
+}
+
+.temp-range {
+  width: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+
+.temperature::after,
+.lowest::after,
+.highest::after {
+  content: "\00B0";
+}
+
+/* fonts */
+p {
+  color: #fff9af;
+}
+.icon {
+  color: rgb(192, 228, 241);
+}
+.dash {
+  color: #fff9af;
+  font-size: 1.2rem;
+}
+.address {
+  font-size: 2rem;
+}
+
+.condition {
+  font-size: 1.3rem;
+}
+
+.temperature,
+.temp-range > p {
+  font-size: 1rem;
+}
+
+.description,
+.date {
+  font-size: 1rem;
+}
+
+input {
+  font-size: 100%;
+}
