@@ -99,6 +99,7 @@ function clearInfo() {
   todayInfo.innerHTML = "";
   forecastInfo.innerHTML = "";
   hasWeatherData = false;
+  currentUnit = "fahrenheit";
 }
 
 async function renderWeatherInfo() {
