@@ -12,7 +12,7 @@ module.exports = {
     filename: "main.js",
     path: path.resolve(__dirname, "dist"),
     clean: true,
-    publicPath: "/weather-app/",
+    // publicPath: "/weather-app/",
   },
   module: {
     rules: [

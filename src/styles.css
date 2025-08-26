@@ -33,6 +33,26 @@ form {
   left: 20px;
 }
 
+.degree-convertion-buttons {
+  width: 200px;
+  display: flex;
+  gap: 5px;
+  position: absolute;
+  top: 60px;
+  left: 48px;
+}
+
+.degree-convertion-buttons button {
+  font-size: 1rem;
+  width: 100px;
+  height: 30px;
+}
+
+.degree-convertion-buttons button.on {
+  background-color: rgba(0, 0, 0, 0.428);
+  color: #fff;
+}
+
 input {
   padding: 5px;
   outline: none;

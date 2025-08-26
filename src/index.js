@@ -22,26 +22,88 @@ class Weather {
     }
   }
 }
+
+let currentUnit = "fahrenheit";
+let hasWeatherData = false;
 const container = document.querySelector("#container");
 const basicInfo = document.querySelector(".basic-info");
 const tempRange = document.querySelector(".basic-info .temp-range");
 const todayInfo = document.querySelector(".today-info");
 const forecastInfo = document.querySelector(".forecast-info");
+const fahrenheitButton = document.querySelector(".fahrenheit");
+const celsiusButton = document.querySelector(".celsius");
+const input = document.querySelector("input");
+
+input.addEventListener("change", renderWeatherInfo);
+
+fahrenheitButton.addEventListener("click", () => {
+  convertToFahrenheit();
+  fahrenheitButton.className = "on";
+  celsiusButton.className = "";
+});
+
+celsiusButton.addEventListener("click", () => {
+  convertToCelsius();
+  celsiusButton.className = "on";
+  fahrenheitButton.className = "";
+});
+
+function convertToCelsius() {
+  if (currentUnit === "celcius") return;
+  if (!hasWeatherData) return;
+  hasWeatherData;
+  const temp = document.querySelector(".temperature");
+  const lowestTemps = document.querySelectorAll(".lowest");
+  const highestTemps = document.querySelectorAll(".highest");
+
+  const celsiusTemp = (parseInt(temp.textContent) - 32) * (5 / 9);
+  temp.textContent = celsiusTemp.toFixed(0);
+
+  lowestTemps.forEach((lowest) => {
+    const celsiusLowest = (parseInt(lowest.textContent) - 32) * (5 / 9);
+    lowest.textContent = celsiusLowest.toFixed(0);
+  });
+
+  highestTemps.forEach((highest) => {
+    const celsiusHighest = (parseInt(highest.textContent) - 32) * (5 / 9);
+    highest.textContent = celsiusHighest.toFixed(0);
+  });
+  currentUnit = "celcius";
+}
+
+function convertToFahrenheit() {
+  if (currentUnit === "fahrenheit") return;
+  if (!hasWeatherData) return;
+  const temp = document.querySelector(".temperature");
+  const lowestTemps = document.querySelectorAll(".lowest");
+  const highestTemps = document.querySelectorAll(".highest");
+
+  const celsiusTemp = parseInt(temp.textContent) * (9 / 5) + 32;
+  temp.textContent = celsiusTemp.toFixed(0);
+
+  lowestTemps.forEach((lowest) => {
+    const celsiusLowest = parseInt(lowest.textContent) * (9 / 5) + 32;
+    lowest.textContent = celsiusLowest.toFixed(0);
+  });
+
+  highestTemps.forEach((highest) => {
+    const celsiusHighest = parseInt(highest.textContent) * (9 / 5) + 32;
+    highest.textContent = celsiusHighest.toFixed(0);
+  });
+  currentUnit = "fahrenheit";
+}
 
 function clearInfo() {
   basicInfo.innerHTML = "";
   tempRange.innerHTML = "";
   todayInfo.innerHTML = "";
   forecastInfo.innerHTML = "";
+  hasWeatherData = false;
 }
 
 async function renderWeatherInfo() {
   clearInfo();
-  const location =
-    document.querySelector(".location-input").value === ""
-      ? "Jiangmen"
-      : document.querySelector(".location-input").value;
-
+  const location = input.value;
   const weather = new Weather(location);
   const weatherData = await weather.getWeatherInfo();
   const currentConditions = weatherData.currentConditions;
@@ -73,10 +135,10 @@ async function renderWeatherInfo() {
 
   basicInfo.append(address);
   basicInfo.append(conditions);
-  tempRange.append(temp);
-  tempRange.append(dash);
+  basicInfo.append(temp);
   tempRange.append(lowestTemp);
-  basicInfo.append(highestTemp);
+  tempRange.append(dash);
+  tempRange.append(highestTemp);
   basicInfo.appendChild(tempRange);
   todayInfo.append(description);
 
@@ -117,10 +179,8 @@ async function renderWeatherInfo() {
     container.appendChild(highestLowestContainer);
     forecastInfo.appendChild(container);
   }
+  hasWeatherData = true;
 }
-
-const input = document.querySelector("input");
-input.addEventListener("change", renderWeatherInfo);
 
 // Change the background color according to the weather conditions
 async function getBgImage(weatherConditions) {
